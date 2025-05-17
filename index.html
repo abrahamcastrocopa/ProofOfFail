@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ReverseCoin: Protocolo Inverso de Proof-of-Work (iPoW)</title>
+</head>
+<body>
+
+  <h1>ReverseCoin: Protocolo Inverso de Proof-of-Work (iPoW)</h1>
+
+  <h2>Resumen</h2>
+  <p>
+    ReverseCoin es una blockchain experimental basada en una innovación radical del mecanismo de consenso Proof of Work (PoW).
+    A diferencia de Bitcoin, donde el nodo que resuelve el problema criptográfico obtiene la recompensa, ReverseCoin premia a los participantes que <strong>no</strong> logran encontrar el hash correcto dentro del tiempo de bloque, incentivando así la <strong>no resolución competitiva</strong>.
+  </p>
+  <p>
+    Este enfoque reduce la centralización asociada con la potencia de cómputo, minimiza el gasto energético y abre un nuevo paradigma económico en la teoría de juegos aplicada a redes descentralizadas.
+  </p>
+
+  <hr>
+
+  <h2>Objetivos del Proyecto</h2>
+  <ul>
+    <li>Incentivar la <strong>distribución equitativa</strong> de recompensas.</li>
+    <li>Reducir la <strong>competencia destructiva</strong> y el gasto energético.</li>
+    <li>Premiar la <strong>participación pasiva o no exitosa</strong>, rompiendo con la lógica tradicional de PoW.</li>
+    <li>Fomentar un entorno <strong>más sostenible y cooperativo</strong> para la minería.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Mecanismo de Consenso: iPoW (Inverse Proof of Work)</h2>
+
+  <h3>1. Participación</h3>
+  <ul>
+    <li>Cada nodo compite en una ronda de minería similar a PoW tradicional.</li>
+    <li>La diferencia: <strong>no se premia al nodo que resuelve el hash válido</strong>, sino a aquellos que <strong>demostrablemente participaron sin éxito</strong>.</li>
+  </ul>
+
+  <h3>2. Prueba de participación fallida (PoF: Proof of Failure)</h3>
+  <p>Cada nodo debe:</p>
+  <ul>
+    <li>Probar criptográficamente que participó (con hashes válidos aunque no ganadores).</li>
+    <li>Subir sus intentos en un bloque especial (failure proofs) para ser elegible a la recompensa.</li>
+  </ul>
+
+  <h3>3. Repartición de Recompensas</h3>
+  <ul>
+    <li>El bloque lo resuelve un nodo (igual que en Bitcoin), pero la recompensa se reparte entre quienes:
+      <ul>
+        <li>Enviaron pruebas válidas de intento.</li>
+        <li>No encontraron el hash correcto.</li>
+      </ul>
+    </li>
+    <li>El “ganador” puede o no recibir una fracción de la recompensa total.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Estructura del Bloque</h2>
+  <ul>
+    <li><strong>Header</strong>: como en Bitcoin (versión, timestamp, nonce, previous block hash)</li>
+    <li><strong>Transactions</strong>: transacciones regulares</li>
+    <li><strong>Proofs of Failure</strong>: hashes fallidos enviados por mineros participantes</li>
+    <li><strong>Reward Distribution Table</strong>: lista de nodos participantes y porcentaje de recompensa recibido</li>
+  </ul>
+
+  <hr>
+
+  <h2>Ejemplo de Reparto</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nodo</th>
+        <th>Resultado</th>
+        <th>Recompensa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nodo A</td>
+        <td>Encontró el hash</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Nodo B</td>
+        <td>Participó, falló</td>
+        <td>30%</td>
+      </tr>
+      <tr>
+        <td>Nodo C</td>
+        <td>Participó, falló</td>
+        <td>30%</td>
+      </tr>
+      <tr>
+        <td>Nodo D</td>
+        <td>Participó, falló</td>
+        <td>40%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>Los porcentajes pueden ajustarse dinámicamente por el protocolo (e.g., según antigüedad, intentos, etc.)</em></p>
+
+  <hr>
+
+  <h2>Incentivos y Seguridad</h2>
+  <ul>
+    <li>El modelo previene ataques de fuerza bruta extremos, ya que no hay ganancia asegurada por encontrar bloques.</li>
+    <li>Desincentiva pools dominantes.</li>
+    <li>Promueve redes de participación constante sin necesidad de hardware extremo.</li>
+    <li>Ofrece resistencia a centralización similar a Proof of Space/Time, pero en el contexto de PoW.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Emisión Monetaria</h2>
+  <ul>
+    <li><strong>Token:</strong> RVC (ReverseCoin)</li>
+    <li><strong>Recompensa inicial:</strong> 50 RVC por bloque</li>
+    <li><strong>Halving:</strong> cada 210,000 bloques (como Bitcoin)</li>
+    <li><strong>Suministro máximo:</strong> 21 millones de RVC</li>
+  </ul>
+
+  <hr>
+
+  <h2>Comparación con Bitcoin</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Característica</th>
+        <th>Bitcoin (PoW)</th>
+        <th>ReverseCoin (iPoW)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Recompensa</td>
+        <td>Gana el bloque</td>
+        <td>Pierde el bloque</td>
+      </tr>
+      <tr>
+        <td>Gasto energético</td>
+        <td>Alto</td>
+        <td>Bajo</td>
+      </tr>
+      <tr>
+        <td>Incentivo competitivo</td>
+        <td>Elevado</td>
+        <td>Reducido</td>
+      </tr>
+      <tr>
+        <td>Participación mínima</td>
+        <td>Costosa</td>
+        <td>Asequible</td>
+      </tr>
+      <tr>
+        <td>Centralización</td>
+        <td>Alta (pools)</td>
+        <td>Baja (igualdad en falla)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Futuro del Proyecto</h2>
+  <ul>
+    <li>Implementación de red testnet</li>
+    <li>Auditoría de seguridad en PoF</li>
+    <li>Ajustes al algoritmo de distribución</li>
+    <li>Publicación del código en GitHub</li>
+  </ul>
+
+  <hr>
+
+  <h2>Conclusión</h2>
+  <p>
+    ReverseCoin rompe con la lógica clásica de que solo el éxito se recompensa.
+    Introduce una economía descentralizada donde el intento fallido, pero verificable, es el pilar del valor.
+  </p>
+  <p>
+    Este enfoque podría redefinir la naturaleza de las recompensas en sistemas descentralizados, abriendo paso a nuevas formas de colaboración, equidad y eficiencia energética.
+  </p>
+
+  <hr>
+
+  <h2>Contacto</h2>
+  <ul>
+    <li><strong>Autor:</strong> Abraham Castro Copa</li>
+    <li><strong>Email:</strong> abrahamcastrocopa@Gmail.com</li>
+    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/abraham-andes-castro-copa-40529a2a5/">Perfil</a></li>
+    <li><strong>Próximamente Sitio web:</strong> xxx.org</li>
+    <li><strong>Próximamente redes sociales:</strong> xxxSocial.com</li>
+  </ul>
+
+</body>
+</html>
